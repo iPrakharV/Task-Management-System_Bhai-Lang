@@ -1,0 +1,165 @@
+hi bhai
+
+  users = []
+  projects = []
+  current_user = none
+
+  # Function to register a new user
+  bhai ye hai register_user(username, password)
+    user = {"username": username, "password": password}
+    users push bhai user
+    bol bhai "User registered: " + username
+  bye bhai
+
+  # Function to log in a user
+  bhai ye hai login_user(username, password)
+    found = false
+    i = 0
+    jab tak bhai i < users length aur found == false tab tak
+      user = users[i]
+      agar bhai user["username"] == username aur user["password"] == password toh
+        current_user = username
+        bol bhai "User logged in: " + username
+        found = true
+      warna agar bhai user["username"] == username aur user["password"] != password toh
+        bol bhai "Incorrect password"
+        found = true
+      bye bhai
+      i = i + 1
+    bye bhai
+    agar bhai found == false toh
+      bol bhai "User not found"
+    bye bhai
+  bye bhai
+
+  # Function to create a new project
+  bhai ye hai create_project(name)
+    agar bhai current_user == none toh
+      bol bhai "Please log in first"
+    warna
+      project = {"name": name, "tasks": [], "owner": current_user}
+      projects push bhai project
+      bol bhai "Project created: " + name
+    bye bhai
+  bye bhai
+
+  # Function to add a task to a project
+  bhai ye hai add_task_to_project(project_name, task_name, assignee)
+    found = false
+    i = 0
+    jab tak bhai i < projects length aur found == false tab tak
+      project = projects[i]
+      agar bhai project["name"] == project_name aur project["owner"] == current_user toh
+        task = {"name": task_name, "assignee": assignee, "status": "incomplete"}
+        project["tasks"] push bhai task
+        bol bhai "Task added to project " + project_name + ": " + task_name + " assigned to " + assignee
+        found = true
+      bye bhai
+      i = i + 1
+    bye bhai
+    agar bhai found == false toh
+      bol bhai "Project not found or you are not the owner"
+    bye bhai
+  bye bhai
+
+  # Function to view projects
+  bhai ye hai view_projects()
+    agar bhai projects length == 0 toh
+      bol bhai "No projects found."
+    warna
+      bol bhai "Projects:"
+      i = 0
+      jab tak bhai i < projects length tab tak
+        project = projects[i]
+        bol bhai i + 1 + ". " + project["name"] + " (Owner: " + project["owner"] + ")"
+        j = 0
+        jab tak bhai j < project["tasks"] length tab tak
+          task = project["tasks"][j]
+          bol bhai "  - " + task["name"] + " (Assignee: " + task["assignee"] + ", Status: " + task["status"] + ")"
+          j = j + 1
+        bye bhai
+        i = i + 1
+      bye bhai
+    bye bhai
+  bye bhai
+
+  # Function to update task status
+  bhai ye hai update_task_status(project_name, task_name, new_status)
+    found = false
+    i = 0
+    jab tak bhai i < projects length aur found == false tab tak
+      project = projects[i]
+      agar bhai project["name"] == project_name aur project["owner"] == current_user toh
+        j = 0
+        jab tak bhai j < project["tasks"] length aur found == false tab tak
+          task = project["tasks"][j]
+          agar bhai task["name"] == task_name toh
+            task["status"] = new_status
+            bol bhai "Task status updated: " + task_name + " to " + new_status
+            found = true
+          bye bhai
+          j = j + 1
+        bye bhai
+      bye bhai
+      i = i + 1
+    bye bhai
+    agar bhai found == false toh
+      bol bhai "Project or task not found, or you are not the owner"
+    bye bhai
+  bye bhai
+
+  # Main program loop
+  jab tak bhai true tab tak
+    bol bhai "Task Management System"
+    bol bhai "1. Register"
+    bol bhai "2. Log in"
+    bol bhai "3. Create project"
+    bol bhai "4. Add task to project"
+    bol bhai "5. View projects"
+    bol bhai "6. Update task status"
+    bol bhai "7. Exit"
+    choice le bhai
+
+    agar bhai choice == 1 toh
+      bol bhai "Enter username:"
+      username le bhai
+      bol bhai "Enter password:"
+      password le bhai
+      register_user(username, password)
+    warna agar bhai choice == 2 toh
+      bol bhai "Enter username:"
+      username le bhai
+      bol bhai "Enter password:"
+      password le bhai
+      login_user(username, password)
+    warna agar bhai choice == 3 toh
+      bol bhai "Enter project name:"
+      project_name le bhai
+      create_project(project_name)
+    warna agar bhai choice == 4 toh
+      bol bhai "Enter project name:"
+      project_name le bhai
+      bol bhai "Enter task name:"
+      task_name le bhai
+      bol bhai "Enter assignee:"
+      assignee le bhai
+      add_task_to_project(project_name, task_name, assignee)
+    warna agar bhai choice == 5 toh
+      view_projects()
+    warna agar bhai choice == 6 toh
+      bol bhai "Enter project name:"
+      project_name le bhai
+      bol bhai "Enter task name:"
+      task_name le bhai
+      bol bhai "Enter new status:"
+      new_status le bhai
+      update_task_status(project_name, task_name, new_status)
+    warna agar bhai choice == 7 toh
+      bol bhai "Exiting..."
+      break bhai
+    warna
+      bol bhai "Invalid choice, please try again."
+    bye bhai
+  bye bhai
+
+bye bhai
