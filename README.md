@@ -16,7 +16,7 @@ A simple task management system implemented in Bhai Lang.
 
 ### Prerequisites
 
-- [Bhai Lang](https://github.com/bhai-lang/bhai-lang) installed on your system.
+- [Bhai Lang]([https://github.com/bhai-lang/bhai-lang](https://github.com/DulLabs/bhai-lang)) installed on your system.
 
 ### Running the Project
 
